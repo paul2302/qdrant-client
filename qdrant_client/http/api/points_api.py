@@ -325,6 +325,7 @@ class _PointsApi:
         self,
         collection_name: str,
         timeout: int = None,
+        consistency: m.ReadConsistency = None,
         facet_request: m.FacetRequest = None,
     ):
         """
@@ -337,6 +338,8 @@ class _PointsApi:
         query_params = {}
         if timeout is not None:
             query_params["timeout"] = str(timeout)
+        if consistency is not None:
+            query_params["consistency"] = str(consistency)
 
         headers = {}
         body = jsonable_encoder(facet_request)
@@ -1098,6 +1101,7 @@ class AsyncPointsApi(_PointsApi):
         self,
         collection_name: str,
         timeout: int = None,
+        consistency: m.ReadConsistency = None,
         facet_request: m.FacetRequest = None,
     ) -> m.InlineResponse20020:
         """
@@ -1106,6 +1110,7 @@ class AsyncPointsApi(_PointsApi):
         return await self._build_for_facet(
             collection_name=collection_name,
             timeout=timeout,
+            consistency=consistency,
             facet_request=facet_request,
         )
 
@@ -1553,6 +1558,7 @@ class SyncPointsApi(_PointsApi):
         self,
         collection_name: str,
         timeout: int = None,
+        consistency: m.ReadConsistency = None,
         facet_request: m.FacetRequest = None,
     ) -> m.InlineResponse20020:
         """
@@ -1561,6 +1567,7 @@ class SyncPointsApi(_PointsApi):
         return self._build_for_facet(
             collection_name=collection_name,
             timeout=timeout,
+            consistency=consistency,
             facet_request=facet_request,
         )
 
