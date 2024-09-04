@@ -2034,8 +2034,8 @@ class SearchGroupsRequest(BaseModel, extra="forbid"):
 
 
 class SearchMatrixOffsetsResponse(BaseModel):
-    offsets_row: List[int] = Field(..., description="Row coordinates of the CRS matrix")
-    offsets_col: List[int] = Field(..., description="Column coordinates ids of the matrix")
+    offsets_row: List[int] = Field(..., description="Row indices of the matrix")
+    offsets_col: List[int] = Field(..., description="Column indices of the matrix")
     scores: List[float] = Field(..., description="Scores associate with coordinates")
     ids: List["ExtendedPointId"] = Field(..., description="Ids of the points in order")
 
@@ -2060,8 +2060,10 @@ class SearchMatrixRequest(BaseModel, extra="forbid"):
         description="Specify in which shards to look for the points, if not specified - look in all shards",
     )
     filter: Optional["Filter"] = Field(default=None, description="Look only for points which satisfies this conditions")
-    sample: int = Field(..., description="How many points to select and search within.")
-    limit: int = Field(..., description="How many neighbours per sample to find")
+    sample: Optional[int] = Field(
+        default=None, description="How many points to select and search within. Default is 10."
+    )
+    limit: Optional[int] = Field(default=None, description="How many neighbours per sample to find. Default is 3.")
     using: Optional[str] = Field(
         default=None,
         description="Define which vector name to use for querying. If missing, the default vector is used.",
