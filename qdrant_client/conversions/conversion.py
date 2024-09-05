@@ -1763,7 +1763,6 @@ class GrpcToRest:
             score=model.score,
         )
 
-
     @classmethod
     def convert_search_matrix_pairs_response(cls, model: grpc.SearchMatrixPairsResponse) -> rest.SearchMatrixPairsResponse:
         return rest.SearchMatrixPairsResponse(
