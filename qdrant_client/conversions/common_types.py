@@ -120,6 +120,10 @@ WithLookupInterface: TypeAlias = rest.WithLookupInterface
 GroupsResult: TypeAlias = rest.GroupsResult
 QueryResponse: TypeAlias = rest.QueryResponse
 
+SearchMatrixRequest = Union[rest.SearchMatrixRequest, grpc.SearchMatrixPoints]
+SearchMatrixOffsetsResponse: TypeAlias = rest.SearchMatrixOffsetsResponse
+SearchMatrixPairsResponse: TypeAlias = rest.SearchMatrixPairsResponse
+
 VersionInfo: TypeAlias = rest.VersionInfo
 
 # we can't use `nptyping` package due to numpy/python-version incompatibilities
