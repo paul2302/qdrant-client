@@ -123,6 +123,7 @@ QueryResponse: TypeAlias = rest.QueryResponse
 SearchMatrixRequest = Union[rest.SearchMatrixRequest, grpc.SearchMatrixPoints]
 SearchMatrixOffsetsResponse: TypeAlias = rest.SearchMatrixOffsetsResponse
 SearchMatrixPairsResponse: TypeAlias = rest.SearchMatrixPairsResponse
+SearchMatrixPair: TypeAlias = rest.SearchMatrixPair
 
 VersionInfo: TypeAlias = rest.VersionInfo
 
